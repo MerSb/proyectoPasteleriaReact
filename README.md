@@ -1,1 +1,1 @@
-# proyectoPasteleriaReact
+# plantilla-template
