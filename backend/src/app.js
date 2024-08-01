@@ -2,12 +2,13 @@ const express = require("express");
 const path = require("path");
 const methodOverride = require("method-override");
 const cors = require("cors");
-const sequelize = require("./config/config");
+const sequelize = require("../src/database/config/config");
+const db = require('../src/database/models/index');
 
 // Importing route files
-const authRoutes = require("./routes/authRoutes");
-const productRoutes = require("./routes/productRoutes");
-const orderRoutes = require("./routes/orderRoutes");
+const authRoutes = require("../src/api/routes/authRoutes");
+const productRoutes = require("../src/api/routes/productRoutes");
+const orderRoutes = require("../src/api/routes/orderRoutes");
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 
 // Sync database
-sequelize.sync({ force: false }) // Use force: true to drop tables and recreate them
+db.sequelize.sync({ force: false }) // Use force: true to drop tables and recreate them
   .then(() => {
     console.log("Database connected and synced");
   })

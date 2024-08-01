@@ -1,19 +1,22 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/config');
+module.exports = (sequelize, DataTypes) => {
+  const Order = sequelize.define('Order', {
+    total: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: 'pending',
+    },
+  }, {
+    timestamps: true,
+  });
 
-const Order = sequelize.define('Order', {
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  total: {
-    type: DataTypes.FLOAT,
-    allowNull: false,
-  },
-  status: {
-    type: DataTypes.STRING,
-    defaultValue: 'pending',
-  },
-});
+  Order.associate = (models) => {
+    Order.belongsTo(models.User, { foreignKey: 'userId' });
+    Order.hasMany(models.OrderItem, { foreignKey: 'orderId' });
+  };
 
-module.exports = Order;
+  return Order;
+};
+
