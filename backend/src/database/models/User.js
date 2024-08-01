@@ -19,10 +19,9 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
   });
 
-  User.associate = function(models) {
-    // Associations
-    User.hasMany(models.Order, { foreignKey: 'userId' });
-  };
+  //User.associate = function(models) {
+   // User.hasMany(models.Order, { foreignKey: 'userId' });
+  //};
   return User;
 };
 

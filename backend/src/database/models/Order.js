@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
   });
 
-  Order.associate = (models) => {
-    Order.belongsTo(models.User, { foreignKey: 'userId' });
-    Order.hasMany(models.OrderItem, { foreignKey: 'orderId' });
-  };
+ // Order.associate = (models) => {
+   // Order.belongsTo(models.User, { foreignKey: 'userId' });
+    //Order.hasMany(models.OrderItem, { foreignKey: 'orderId' });
+ // };
 
   return Order;
 };
