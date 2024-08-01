@@ -1,38 +1,40 @@
 const express = require("express");
 const path = require("path");
-const methodOverride = require('method-override');
+const methodOverride = require("method-override");
+const cors = require("cors");
+const sequelize = require("./config/config");
 
-// Requiriendo  archivos de rutas
-// const rutasMain = require('./api/routes/mainRoutes.routes.js')
-const rutasAspirantes = require('./api/routes/aspirantesRoutes.routes.js')
-const rutasProfesiones = require('./api/routes/profesionesRoutes.routes.js')
+// Importing route files
+const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 const app = express();
 
-// ************ Middlewares  ************
-app.use(methodOverride('_method'));
-// app.use(userLoggedMiddleware);
-
-// CORS MIDDLEWARE
-const cors = require('cors');
+// ************ Middlewares ************
+app.use(methodOverride("_method"));
 app.use(cors());
 
 const publicPath = path.join(__dirname, "../public");
 app.use(express.static(publicPath));
-app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-// ************ Rutas  ************
-// app.use('/', rutasMain)
-// app.use('/api/aspirantes', rutasAspirantes)
-// app.use('/api/profesiones', rutasProfesiones)
+// ************ Routes ************
+app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 
-// Entrada PARA FORZAR LA CREACION DE LA BASE DE DATOS 1
-// let SEQ = require('./database/models')
+// Sync database
+sequelize.sync({ force: false }) // Use force: true to drop tables and recreate them
+  .then(() => {
+    console.log("Database connected and synced");
+  })
+  .catch((error) => {
+    console.error("Failed to sync database:", error);
+  });
 
 const port = process.env.PORT || 3737;
 app.listen(port, () => {
-	// Entrada PARA FORZAR LA CREACION DE LA BASE DE DATOS 2
-	// SEQ.sequelize.sync({force: true })    
-	console.log(`El servidor esta corriendo en http://localhost:${port} 🚀🚀🚀`);
+  console.log(`El servidor está corriendo en http://localhost:${port} 🚀🚀🚀`);
 });
