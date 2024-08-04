@@ -1,20 +1,26 @@
 import React from 'react';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 
-const Checkout = ({ cartItems, addItem, removeItem, clearItem }) => {
+const Checkout = ({ cartItems = [], addItem, removeItem, clearItem }) => {
+
+
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-bold mb-4">Checkout</h1>
       <div>
-        {cartItems.map((cartItem) => (
-          <CheckoutItem
-            key={cartItem.id}
-            cartItem={cartItem}
-            addItem={addItem}
-            removeItem={removeItem}
-            clearItem={clearItem}
-          />
-        ))}
+        {cartItems.length ? (
+          cartItems.map((cartItem) => (
+            <CheckoutItem
+              key={cartItem.id}
+              cartItem={cartItem}
+              addItem={addItem}
+              removeItem={removeItem}
+              clearItem={clearItem}
+            />
+          ))
+        ) : (
+          <p>No items in the cart</p>
+        )}
       </div>
       <div className="text-right mt-4">
         <span className="text-xl font-semibold">
@@ -30,3 +36,4 @@ const Checkout = ({ cartItems, addItem, removeItem, clearItem }) => {
 };
 
 export default Checkout;
+

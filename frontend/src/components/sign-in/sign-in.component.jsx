@@ -27,7 +27,7 @@ const SignIn = () => {
 
   return (
     <div className="max-w-md mx-auto p-8">
-      <h2 className="text-2xl font-bold mb-4">Sign In</h2>
+      <h2 className="text-2xl font-bold mb-4">Iniciar sesión</h2>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Email"
