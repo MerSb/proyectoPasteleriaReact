@@ -2,8 +2,11 @@ const express = require("express");
 const path = require("path");
 const methodOverride = require("method-override");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const sequelize = require("../src/database/config/config");
 const db = require('../src/database/models/index');
+const mercadopago = require('mercadopago');
+const paymentRoutes = require('./api/routes/paymentRoutes');
 
 // Importing route files
 const authRoutes = require("../src/api/routes/authRoutes");
@@ -25,6 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
+//app.use('/api/payments', paymentRoutes); 
 
 // Sync database
 db.sequelize.sync({ force: false }) // Use force: true to drop tables and recreate them
@@ -34,6 +38,11 @@ db.sequelize.sync({ force: false }) // Use force: true to drop tables and recrea
   .catch((error) => {
     console.error("Failed to sync database:", error);
   });
+
+// Set up Mercado Pago configurations
+//mercadopago.configure({
+//  access_token: 'aeecea3e11f2545d1e7790eb6591ff68df74c57930551ed980239f4538a7e530' 
+//});
 
 const port = process.env.PORT || 3737;
 app.listen(port, () => {
