@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { CartContext } from '../../contexts/cart-context';
 
 const ProductCard = ({ product }) => {
-  const { addItemToCart } = useContext(CartContext);
+
+  const { addItem } = useContext(CartContext);
 
   const { name, price, imageUrl } = product;
 
@@ -12,7 +13,7 @@ const ProductCard = ({ product }) => {
       <h2 className="text-lg font-bold">{name}</h2>
       <p className="text-sm text-gray-600">${price.toFixed(2)}</p>
       <button
-        onClick={() => addItemToCart(product)}
+        onClick={() => addItem(product)}
         className="mt-2 w-full bg-black text-white py-1 rounded"
       >
         Añadir al Carrito
@@ -22,4 +23,5 @@ const ProductCard = ({ product }) => {
 };
 
 export default ProductCard;
+
 

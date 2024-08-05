@@ -1,31 +1,34 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../../contexts/cart-context';
-import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+// src/components/checkout-item/checkout-item.component.jsx
+import React from 'react';
 
-const Checkout = () => {
-  const { cartItems, addItem, removeItem, clearItem } = useContext(CartContext);
+const CheckoutItem = ({ cartItem, addItem, removeItem, clearItem }) => {
+  const { id, imageUrl, name, price, quantity } = cartItem;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-4">Checkout</h1>
-      <div className="flex flex-col space-y-4">
-        {cartItems && cartItems.length > 0 ? (
-          cartItems.map((cartItem) => (
-            <CheckoutItem
-              key={cartItem.id}
-              cartItem={cartItem}
-              addItem={addItem}
-              removeItem={removeItem}
-              clearItem={clearItem}
-            />
-          ))
-        ) : (
-          <span className="text-center text-gray-600">Your cart is empty</span>
-        )}
+    <div className="flex items-center justify-between border-b pb-2">
+      <div className="flex items-center">
+        <img src={imageUrl} alt={name} className="w-16 h-16 object-cover mr-4" />
+        <div>
+          <h2 className="text-lg font-bold">{name}</h2>
+          <p className="text-sm text-gray-600">${price.toFixed(2)}</p>
+          <p className="text-sm text-gray-600">Cantidad: {quantity}</p>
+        </div>
+      </div>
+      <div className="flex items-center">
+        <button onClick={() => removeItem(cartItem)} className="text-red-600 mr-2">
+          -
+        </button>
+        <button onClick={() => addItem(cartItem)} className="text-green-600 mr-2">
+          +
+        </button>
+        <button onClick={() => clearItem(cartItem)} className="text-red-600">
+          Eliminar
+        </button>
       </div>
     </div>
   );
 };
 
-export default Checkout;
+export default CheckoutItem;
+
 

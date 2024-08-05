@@ -1,49 +1,39 @@
 import React, { createContext, useState } from 'react';
 
-// Crea el contexto del carrito
-export const CartContext = createContext({
-  cartItems: [],
-  addItemToCart: () => {},
-  removeItemFromCart: () => {},
-  buyAllItems: () => {},
-});
 
-// Componente proveedor del carrito
+export const CartContext = createContext();
+
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
-  const addItemToCart = (product) => {
+  const addItem = (itemToAdd) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.id === product.id);
+      const existingItem = prevItems.find((item) => item.id === itemToAdd.id);
       if (existingItem) {
-        // Si el producto ya está en el carrito, incrementa la cantidad
         return prevItems.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+          item.id === itemToAdd.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
-      // Si el producto no está en el carrito, añádelo con cantidad 1
-      return [...prevItems, { ...product, quantity: 1 }];
+      return [...prevItems, { ...itemToAdd, quantity: 1 }];
     });
   };
 
-  const removeItemFromCart = (productId) => {
+  const removeItem = (itemToRemove) => {
     setCartItems((prevItems) =>
-      prevItems.filter((item) => item.id !== productId)
+      prevItems
+        .map((item) =>
+          item.id === itemToRemove.id ? { ...item, quantity: item.quantity - 1 } : item
+        )
+        .filter((item) => item.quantity > 0)
     );
   };
 
-  const buyAllItems = () => {
-    // Lógica para procesar la compra de todos los artículos
-    // Esto podría incluir vaciar el carrito o enviar datos al servidor
-    console.log('Comprando todos los artículos', cartItems);
-    // Aquí podrías enviar los datos al backend
-    setCartItems([]); // Vaciar el carrito después de la compra
+  const clearItem = (itemToClear) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemToClear.id));
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addItemToCart, removeItemFromCart, buyAllItems }}>
+    <CartContext.Provider value={{ cartItems, addItem, removeItem, clearItem }}>
       {children}
     </CartContext.Provider>
   );

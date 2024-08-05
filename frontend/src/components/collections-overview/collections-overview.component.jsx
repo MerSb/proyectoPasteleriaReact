@@ -1,5 +1,3 @@
-// src/components/collections-overview/collections-overview.component.jsx
-
 import React from 'react';
 import CollectionItem from '../collection-item/collection-item.component';
 
