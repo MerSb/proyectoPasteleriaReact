@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUp } from '../apiService'; 
+import registerBackground from '../../assets/img/register-background.png';
+
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -26,7 +28,12 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div
+      className="flex items-center justify-center h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${registerBackground})`,
+      }}
+    >
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Crear Cuenta</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}

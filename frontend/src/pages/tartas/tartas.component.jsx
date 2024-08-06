@@ -35,7 +35,7 @@ const tartas = [
   {
     id: 6,
     name: 'Tarta de Frutas',
-    imageUrl: '/src/assets/img/tarta-manzana.jpg',
+    imageUrl: '/src/assets/img/tarta-frutal.jpg',
     price: 9.99,
   },
   {
