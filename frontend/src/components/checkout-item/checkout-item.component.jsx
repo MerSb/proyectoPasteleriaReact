@@ -1,7 +1,9 @@
-// src/components/checkout-item/checkout-item.component.jsx
-import React from 'react';
+// checkout-item.component.jsx
+import React, { useContext } from 'react';
+import { CartContext } from '../../contexts/cart-context';
 
-const CheckoutItem = ({ cartItem, addItem, removeItem, clearItem }) => {
+const CheckoutItem = ({ cartItem }) => {
+  const { addItem, removeItem, clearItem } = useContext(CartContext);
   const { id, imageUrl, name, price, quantity } = cartItem;
 
   return (
@@ -30,5 +32,6 @@ const CheckoutItem = ({ cartItem, addItem, removeItem, clearItem }) => {
 };
 
 export default CheckoutItem;
+
 
 

@@ -16,9 +16,6 @@ const Header = () => {
         Shop Logo
       </Link>
       <div className="flex items-center">
-        <Link to="/cart" className="mr-4">
-          Carrito ({itemCount})
-        </Link>
         <CartIcon />
         {/* Pass cartItems as a prop to CartDropdown */}
         <CartDropdown cartItems={cartItems} />

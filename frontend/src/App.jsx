@@ -11,7 +11,7 @@ import Tortas from './pages/tortas/tortas.component';
 import Cupcakes from './pages/cupcakes/cupcakes.component';
 import Postres from './pages/postres/postres.component';
 import Cheesecake from './pages/cheesecake/cheesecake.component';
-import Cart from './pages/cart/cart.component';
+//import Cart from './pages/cart/cart.component';<Route path="/cart" element={<Cart />} />
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         <Route path="/shop/cupcakes" element={<Cupcakes />} />
         <Route path="/shop/postres" element={<Postres />} />
         <Route path="/shop/cheesecake" element={<Cheesecake />} />
-        <Route path="/cart" element={<Cart />} />
+        
       </Routes>
     </>
   );

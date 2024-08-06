@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import { CartContext } from '../../contexts/cart-context';
+import { CartProvider } from '../../contexts/cart-context';
+
 
 
 const Checkout = () => {
@@ -41,7 +43,11 @@ const Checkout = () => {
           cartItems.map(cartItem => (
             <CheckoutItem
               key={cartItem.id}
+              
               cartItem={cartItem}
+              // addItem={CartProvider.addItem}
+              //  removeItem={CartProvider.removeItem}
+              //  clearItem ={CartProvider.clearItem}
             />
           ))
         ) : (
@@ -62,21 +68,21 @@ const Checkout = () => {
     </div>
   );
 };
-const CheckoutButton = ({ preferenceId }) => {
-  return (
-    <div>
-      <h2>Complete Your Purchase</h2>
-      <div id="wallet_container">
-        <Wallet
-          initialization={{ preferenceId: preferenceId }}
-          customization={{ texts: { valueProp: 'smart_option' } }}
-        />
-      </div>
-    </div>
-  );
-};
+// const CheckoutButton = ({ preferenceId }) => {
+//   return (
+//     <div>
+//       <h2>Complete Your Purchase</h2>
+//       <div id="wallet_container">
+//         <Wallet
+//           initialization={{ preferenceId: preferenceId }}
+//           customization={{ texts: { valueProp: 'smart_option' } }}
+//         />
+//       </div>
+//     </div>
+//   );
+//CheckoutButton };
 
-export default {Checkout, CheckoutButton};
+export default Checkout;
 
 
 
