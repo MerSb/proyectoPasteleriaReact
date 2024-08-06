@@ -11,13 +11,13 @@ const tartas = [
   {
     id: 2,
     name: 'Tarta de Frutilla',
-    imageUrl: '/src/assets/img/tarta-fresa.jpg',
+    imageUrl: '/src/assets/img/tarta-frutilla.jpg',
     price: 12.99,
   },
   {
     id: 3,
     name: 'Tarta de Lemon Pie',
-    imageUrl: '/src/assets/img/tarta-manzana.jpg',
+    imageUrl: '/src/assets/img/tarta-lemon-pie.jpg',
     price: 9.99,
   },
   {
@@ -44,6 +44,19 @@ const tartas = [
     imageUrl: '/src/assets/img/tarta-manzana.jpg',
     price: 9.99,
   },
+  {
+    id: 8,
+    name: 'Tarta de Oreo',
+    imageUrl: '/src/assets/img/tarta-manzana.jpg',
+    price: 9.99,
+  },
+  {
+    id: 9,
+    name: 'Tarta de Kiwi',
+    imageUrl: '/src/assets/img/tarta-manzana.jpg',
+    price: 9.99,
+  },
+
   
 ];
 

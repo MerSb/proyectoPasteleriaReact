@@ -12,9 +12,11 @@ import Cupcakes from './pages/cupcakes/cupcakes.component';
 import Postres from './pages/postres/postres.component';
 import Cheesecake from './pages/cheesecake/cheesecake.component';
 //import Cart from './pages/cart/cart.component';<Route path="/cart" element={<Cart />} />
+import { CartProvider } from './contexts/cart-context';
 
 function App() {
   return (
+    <CartProvider>
     <>
       <Header />
       <Routes>
@@ -30,6 +32,7 @@ function App() {
         
       </Routes>
     </>
+    </CartProvider>
   );
 }
 

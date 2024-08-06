@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { CartContext } from '../../contexts/cart-context';
+import logo from '../../assets/img/logu.png';
 
 const Header = () => {
   const { cartItems, toggleCartDropdown } = useContext(CartContext);
@@ -13,7 +14,7 @@ const Header = () => {
   return (
     <div className="flex justify-between items-center py-4 bg-black text-white">
       <Link to="/" className="text-xl font-bold">
-        Shop Logo
+      <img src={logo} alt="Shop Logo" className="w-12 h-12" />
       </Link>
       <div className="flex items-center">
         <CartIcon itemCount={itemCount} toggleCartDropdown={toggleCartDropdown} />

@@ -10,15 +10,15 @@ const rootElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootElement);
 
 // Initialize Mercado Pago with your public key
-initMercadoPago('https://api.mercadopago.com/v2/wallet_connect/agreements/{agreement_id}/payer_token');
+//initMercadoPago('https://api.mercadopago.com/v2/wallet_connect/agreements/{agreement_id}/payer_token');
 
 root.render(
   <React.StrictMode>
-    <CartProvider>
+    
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </CartProvider>
+    
   </React.StrictMode>
 );
 
