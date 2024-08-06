@@ -8,6 +8,8 @@ const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
     <div
       className={`relative overflow-hidden ${size === 'large' ? 'w-full h-80' : 'w-1/2 h-60'} cursor-pointer mb-4`}
       onClick={() => navigate(linkUrl)}
+      role="button"
+      aria-label={`Navigate to ${title}`}
     >
       <div
         className="absolute inset-0 bg-cover bg-center transform hover:scale-105 transition-transform duration-300"

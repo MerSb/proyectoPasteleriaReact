@@ -5,6 +5,7 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { CartContext } from '../../contexts/cart-context';
 import logo from '../../assets/img/logu.png';
 
+
 const Header = () => {
   const { cartItems, toggleCartDropdown } = useContext(CartContext);
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);

@@ -53,13 +53,14 @@ const Homepage = () => {
           <div
             key={id}
             className="relative group cursor-pointer rounded-lg overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-105"
+            onClick={() => window.location.href = linkUrl}
           >
             <img
               src={imageUrl}
               alt={title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
               <span className="text-white text-lg font-bold">{title}</span>
             </div>
           </div>
