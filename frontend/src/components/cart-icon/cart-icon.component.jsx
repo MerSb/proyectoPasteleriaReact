@@ -4,7 +4,8 @@ import React from 'react';
 const CartIcon = ({ itemCount, toggleCartDropdown }) => {
   return (
     <div className="relative cursor-pointer" onClick={toggleCartDropdown}>
-      
+      {/* You can include a shopping icon here if desired */}
+      <div className="shopping-icon">🛒</div>
       <span className="absolute right-0 top-0 bg-red-600 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
         {itemCount}
       </span>

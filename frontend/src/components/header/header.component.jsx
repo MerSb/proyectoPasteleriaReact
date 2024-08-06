@@ -5,7 +5,7 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import { CartContext } from '../../contexts/cart-context';
 
 const Header = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, toggleCartDropdown } = useContext(CartContext);
   const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   console.log(cartItems);
@@ -16,8 +16,7 @@ const Header = () => {
         Shop Logo
       </Link>
       <div className="flex items-center">
-        <CartIcon />
-        {/* Pass cartItems as a prop to CartDropdown */}
+        <CartIcon itemCount={itemCount} toggleCartDropdown={toggleCartDropdown} />
         <CartDropdown cartItems={cartItems} />
       </div>
     </div>
@@ -25,5 +24,6 @@ const Header = () => {
 };
 
 export default Header;
+
 
 
